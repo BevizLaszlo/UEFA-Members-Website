@@ -1,0 +1,417 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0.75vw;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(37, 37, 37);
+    border-radius: 100vh;
+    border: 1px solid rgb(177, 177, 177);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(177, 177, 177);
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(37, 37, 37);
+} 
+
+.container, .main-page, .second-page {
+    height: 100vh;
+}
+
+
+
+/* Language options */
+
+.languages {
+    position: fixed;
+    display: flex;
+    margin: 30px;
+    gap: 12px;
+}
+
+.languages div {
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.languages img {
+    width: 35px;
+    height: 25px;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.languages img:hover {
+    filter: grayscale(0);
+    transition: 0.3s;
+}
+
+
+
+/* The main title on the left side with the UEFA logo */
+
+.title {
+    width: -moz-fit-content;
+    width: fit-content;
+    float: left;
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translate(-3%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title > * {
+    margin: 10px;
+}
+
+.title img {
+    height: 20vh;
+}
+
+.inner-title {
+    padding-bottom: 10px;
+}
+
+h1 {
+    font-size: 5vw;
+}
+
+h2 {
+    font-size: 1.75vw;
+    text-transform: uppercase;
+}
+
+a {
+    font-size: 1vw;
+    background-color: rgb(37, 37, 37);
+    color: rgb(177, 177, 177);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding: 10px;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+
+
+
+/* svg map properties */
+
+.mapdiv {
+    height: 100%;
+    width: -moz-fit-content;
+    width: fit-content;
+    float: right;
+}
+
+svg {
+    vertical-align: top;
+    height: 100%;
+    max-width: 100%;
+}
+
+svg path, svg circle {
+    fill: rgb(216, 216, 216);
+    stroke: rgb(37, 37, 37);
+    stroke-width: 0.25px;
+    transition: all 0.35s;
+}
+
+svg :hover {
+    fill: rgb(37, 37, 37);
+    stroke: rgb(37, 37, 37);
+    stroke-width: 0.5px;
+}
+
+
+
+/* Country pop-ups */
+
+div.modul {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 7px;
+    z-index: 10;
+    width: 80%;
+    max-width: 970px;
+    height: 80%;
+    color: rgb(37, 37, 37);
+    border: 2px solid rgb(37, 37, 37);
+}
+
+div.modul header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(37, 37, 37);
+    padding-block: 1%;
+    padding-inline: 3%;
+}
+
+div.modul header button {
+    background: none;
+    border: none;
+    font-size: 150%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#FlagName {
+    display: flex;
+}
+
+#FlagName h2 {
+    font-size: 2.7vw;
+}
+
+#FlagName img {
+    height: 3vw;
+    margin-right: 10px;
+    border: 0.5px solid rgb(37, 37, 37);
+}
+
+div.modul main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+div.modul main table {
+    width: 80%;
+    margin-inline: auto;
+    text-align: center;
+}
+
+#secondRow > * {
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+#overlay {
+    width: 100hw;
+    height: 100vw;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    pointer-events: all;
+}
+
+
+
+/* Country hover titles */
+
+.country-title {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    background-color: rgb(216, 216, 216);
+    border: 1px solid rgb(37, 37, 37);
+    height: 30px;
+    padding: 7px;
+    border-radius: 7px;
+
+}
+
+.country-title img {
+    height: 20px;
+}
+
+.hide {
+    display: none;
+}
+
+
+
+/* Second page */
+
+.second-page {
+    background-color: rgb(37, 37, 37);
+    color: rgb(177, 177, 177);
+}
+
+.wrapper a {
+    color: rgb(37, 37, 37);
+    background-color: rgb(177, 177, 177);
+}
+
+.wrapper,
+.wrapper-content {
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 30px;
+    gap: 20px;
+}
+
+.wrapper-content {
+    justify-content: center;
+}
+
+.national,
+.club {
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.competition {
+    overflow: hidden;
+    flex-grow: 1;
+    width: 25%;
+    height: 27vh;
+    background-color: rgb(37, 37, 37);
+    box-shadow: inset 0 0 30px rgb(94, 92, 92);
+    border: 2px solid transparent;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.content > * {
+    width: 50%;
+}
+
+.trophy {
+    display: flex;
+    z-index: 1;
+}
+
+.trophy img {
+    height: 80%;
+    align-self: center;
+    margin: auto;
+}
+
+.info {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.info img {
+    height: 50%;
+}
+
+@keyframes slide-out {
+    0%, 20% {
+        margin-left: -100%;
+        z-index: -1;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        margin-left: 0;
+        z-index: 0;
+        opacity: 1;
+    }
+}
+
+.uec:hover {
+    box-shadow: inset 0 0 30px rgb(11, 160, 85);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(11, 160, 85, 0.9));
+    border: 2px solid rgb(11, 160, 85);
+    transition: 0.5s;
+}
+.uec:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
+
+.unl:hover {
+    box-shadow: inset 0 0 30px rgb(14, 34, 71);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(14, 34, 71, 0.9));
+    border: 2px solid rgb(14, 34, 71);
+    transition: 0.5s;
+}
+.unl:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
+
+.ueq:hover {
+    box-shadow: inset 0 0 30px rgb(150, 10, 10);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(150, 10, 10, 0.9));
+    border: 2px solid rgb(150, 10, 10);
+    transition: 0.5s;
+}
+.ueq:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
+
+.ucl:hover {
+    box-shadow: inset 0 0 30px rgb(9, 20, 66);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(9, 20, 66, 0.9));
+    border: 2px solid rgb(9, 20, 66);
+    transition: 0.5s;
+}
+.ucl:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
+
+.uel:hover {
+    box-shadow: inset 0 0 30px rgb(250, 110, 7);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(250, 108, 7, 0.9));
+    border: 2px solid rgb(250, 110, 7);
+    transition: 0.5s;
+}
+.uel:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
+
+.uecl:hover {
+    box-shadow: inset 0 0 30px rgb(0, 190, 20);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(0, 190, 20, 0.9));
+    border: 2px solid rgb(0, 190, 20);
+    transition: 0.5s;
+}
+.uecl:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
+
+.usc:hover {
+    box-shadow: inset 0 0 30px rgb(2, 44, 197);
+    background-image: linear-gradient(to right, rgb(37, 37, 37, 0.8), rgba(2, 44, 197, 0.9));
+    border: 2px solid rgb(2, 44, 197);
+    transition: 0.5s;
+}
+.usc:hover .info {
+    display: flex;
+    animation: slide-out 1s;
+}
