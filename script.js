@@ -7,7 +7,7 @@
 
 document.onkeydown = (event) => {
     event.preventDefault();
-    if ((event.which == 32 || event.which == 40) && !document.querySelector(".closeBtn")) {
+    if ((event.which == 32 || event.which == 40) && document.querySelector(".closeBtn") === null) {
         document.getElementById("go-down").click();
     } else if (event.which == 38) {
         document.getElementById("go-back").click();
