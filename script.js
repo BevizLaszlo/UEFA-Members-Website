@@ -1,4 +1,20 @@
+/**
+ * this function:
+ *  - disable scrolling down with the 'space' key in the website
+ *  - enable to close country pop ups with 'Esc'
+ * */ 
+
+document.onkeydown = (event) => {
+    if (event.which == 32) {
+        event.preventDefault();
+    } else if (event.which == 27 && document.querySelector(".closeBtn")) {
+        closeDescription();
+    }
+}
+
+
 /*
+ * Languages:
  * 0: hungarian
  * 1: english
  */
@@ -125,7 +141,7 @@ function renderLanguage() {
     
 }
 
-
+// this function closes country pop up
 function closeDescription() {
     document.getElementById('favicon').setAttribute('href', "img/uefa_logo.png");
     document.title = languages[lang].title;
@@ -133,6 +149,9 @@ function closeDescription() {
     document.getElementById("overlay").remove();
 }
 
+
+
+// this function remove the third kit if the team doesn't have it.
 function removeElement(element1, element2) {
     element1.remove();
     element2.remove();
@@ -142,8 +161,7 @@ function removeElement(element1, element2) {
 
 
 for (let id in Nations){
-
-
+    // country hover titles:
     document.getElementById(id).onmousemove = () => {
         document.querySelector(".country-title").innerHTML = `
             <img src="./img/flags/${id}.png" alt="${Nations[id][lang]}">
@@ -166,6 +184,8 @@ for (let id in Nations){
     }
 
 
+
+    // country pop ups:
     document.getElementById(id).onclick = () => {
         document.getElementById('favicon').setAttribute('href',`./img/flags/${id}.png`);
         document.title = Nations[id][lang];
@@ -179,7 +199,7 @@ for (let id in Nations){
                         <img src="./img/flags/${id}.png" alt="${Nations[id][lang]} flag">
                         <h2>${Nations[id][lang]}</h2>
                     </div>
-                    <button onClick="closeDescription()">&times;</button>
+                    <button class="closeBtn" onClick="closeDescription()">&times;</button>
                 </header>
                 <main>
                     <table>
