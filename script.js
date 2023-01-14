@@ -6,10 +6,13 @@
  * */ 
 
 document.onkeydown = (event) => {
-    event.preventDefault();
-    if ((event.which == 32 || event.which == 40) && document.querySelector(".closeBtn") === null) {
-        document.getElementById("go-down").click();
+    if ((event.which == 32 || event.which == 40)) {
+        event.preventDefault();
+        if (document.querySelector(".closeBtn") === null) {
+            document.getElementById("go-down").click();
+        }
     } else if (event.which == 38) {
+        event.preventDefault();
         document.getElementById("go-back").click();
     } else if (event.which == 27 && document.querySelector(".closeBtn")) {
         closeDescription();
@@ -131,7 +134,7 @@ function renderLanguage() {
         <h1>UEFA</h1>
         <h2>${languages[lang].smallTitle}</h2>
         <br>
-        <a href="#second-page">${languages[lang].moreInfo}</a>
+        <a href="#second-page" id="go-down"><span>${languages[lang].moreInfo}</span></a>
         `;
         document.getElementById("go-back").innerHTML = languages[lang].goBack;
         document.querySelector(".competition-title").innerHTML = languages[lang].competitions;
