@@ -1,12 +1,16 @@
 /**
  * this function:
- *  - disable scrolling down with the 'space' key in the website
- *  - enable to close country pop ups with 'Esc'
+ *  - disable scrolling down with the 'space' or 'down' key in the website when the pop up panel is opened
+ *  - enable to switch pages using arrow keys or 'space'
+ *  - enable to close country pop ups with 'Esc' key
  * */ 
 
 document.onkeydown = (event) => {
-    if (event.which == 32) {
-        event.preventDefault();
+    event.preventDefault();
+    if ((event.which == 32 || event.which == 40) && !document.querySelector(".closeBtn")) {
+        document.getElementById("go-down").click();
+    } else if (event.which == 38) {
+        document.getElementById("go-back").click();
     } else if (event.which == 27 && document.querySelector(".closeBtn")) {
         closeDescription();
     }
