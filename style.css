@@ -189,6 +189,7 @@ div.modul header button {
 
 #FlagName {
     display: flex;
+    gap: 10px;
 }
 
 #FlagName h2 {
@@ -197,7 +198,6 @@ div.modul header button {
 
 #FlagName img {
     height: 3vw;
-    margin-right: 10px;
     border: 0.5px solid rgb(var(--dark-grey));
 }
 
