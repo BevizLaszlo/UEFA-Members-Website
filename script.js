@@ -24,6 +24,7 @@ document.onkeydown = (event) => {
  * Languages:
  * 0: hungarian
  * 1: english
+ * 2: german
  */
 
 const languages = [
@@ -52,6 +53,19 @@ const languages = [
         national: "For national teams",
         clubs: "For clubs",
         more: "More"
+    },
+    {
+        title: "UEFA-Mitgliedsverbände",
+        smallTitle: "Mitgliedsverbände",
+        moreInfo: "mehr info",
+        homeKit: "Heimtrikot",
+        awayKit: "Auswärtstrikot",
+        thirdKit: "Drittes Trikot",
+        goBack: "Zurück",
+        competitions: "Wettbewerbe",
+        national: "Für Nationalmannschaften",
+        clubs: "Für Vereinsmannschaften",
+        more: "Mehr"
     }
 ]
 
@@ -59,62 +73,63 @@ const Nations = {
     /*
         0: magyar név / hungarian name
         1: angol név / english name
+        2: német név / german name
     */     
-    "alb": ["Albánia", "Albania"],
-    "and": ["Andorra", "Andorra"],
-    "arm": ["Örményország", "Armenia"],
-    "aut": ["Ausztria", "Austria"],
-    "aze": ["Azerbajdzsán", "Azerbaijan"],
-    "bel": ["Belgium", "Belgium"],
-    "bih": ["Bosznia-Hercegovina", "Bosnia and Herzegovina"],
-    "blr": ["Fehéroroszország", "Belarus"],
-    "bul": ["Bulgária", "Bulgaria"],
-    "cro": ["Horvátország", "Croatia"],
-    "cyp": ["Ciprus", "Cyprus"],
-    "cze": ["Csehország", "Czech Republic"],
-    "den": ["Dánia", "Denmark"],
-    "eng": ["Anglia", "England"],
-    "esp": ["Spanyolország", "Spain"],
-    "est": ["Észtország", "Estonia"],
-    "fin": ["Finnország", "Finland"],
-    "fra": ["Franciaország", "France"],
-    "fro": ["Feröer-szigetek", "Faroe Islands"],
-    "geo": ["Grúzia", "Georgia"],
-    "ger": ["Németország", "Germany"],
-    "gib": ["Gibraltár", "Gibraltar"],
-    "gre": ["Görögország", "Greece"],
-    "hun": ["Magyarország", "Hungary"],
-    "irl": ["Írország", "Republic of Ireland"],
-    "isl": ["Izland", "Iceland"],
-    "isr": ["Izrael", "Israel"],
-    "ita": ["Olaszország", "Italy"],
-    "kaz": ["Kazahsztán", "Kazakhstan"],
-    "kvx": ["Koszovó", "Kosovo"],
-    "lie": ["Liechtenstein", "Liechtenstein"],
-    "ltu": ["Litvánia", "Lithuania"],
-    "lux": ["Luxemburg", "Luxembourg"],
-    "lva": ["Lettország", "Latvia"],
-    "mda": ["Moldova", "Moldova"],
-    "mkd": ["Észak-Macedónia", "North Macedonia"],
-    "mlt": ["Málta", "Malta"],
-    "mne": ["Montenegró", "Montenegro"],
-    "ned": ["Hollandia", "The Netherlands"],
-    "nir": ["Észak-Írország", "Northern Ireland"],
-    "nor": ["Norvégia", "Norway"],
-    "pol": ["Lengyelország", "Poland"],
-    "por": ["Portugália", "Portugal"],
-    "rou": ["Románia", "Romania"],
-    "rus": ["Oroszország", "Russia"],
-    "sco": ["Skócia", "Scotland"],
-    "smr": ["San Marino", "San Marino"],
-    "srb": ["Szerbia", "Serbia"],
-    "sui": ["Svájc", "Switzerland"],
-    "svk": ["Szlovákia", "Slovakia"],
-    "svn": ["Szlovénia", "Slovenia"],
-    "swe": ["Svédország", "Sweden"],
-    "tur": ["Törökország", "Türkiye"],
-    "ukr": ["Ukrajna", "Ukraine"],
-    "wal": ["Wales", "Wales"],
+    "alb": ["Albánia", "Albania", "Albanien"],
+    "and": ["Andorra", "Andorra", "Andorra"],
+    "arm": ["Örményország", "Armenia", "Armenien"],
+    "aut": ["Ausztria", "Austria", "Österreich"],
+    "aze": ["Azerbajdzsán", "Azerbaijan", "Aserbaidschan"],
+    "bel": ["Belgium", "Belgium", "Belgien"],
+    "bih": ["Bosznia-Hercegovina", "Bosnia and Herzegovina", "Bosnien und Herzegowina"],
+    "blr": ["Fehéroroszország", "Belarus", "Belarus"],
+    "bul": ["Bulgária", "Bulgaria", "Bulgarien"],
+    "cro": ["Horvátország", "Croatia", "Kroatien"],
+    "cyp": ["Ciprus", "Cyprus", "Zypern"],
+    "cze": ["Csehország", "Czech Republic", "Tschechien"],
+    "den": ["Dánia", "Denmark", "Dänemark"],
+    "eng": ["Anglia", "England", "England"],
+    "esp": ["Spanyolország", "Spain", "Spanien"],
+    "est": ["Észtország", "Estonia", "Estland"],
+    "fin": ["Finnország", "Finland", "Finnland"],
+    "fra": ["Franciaország", "France", "Frankreich"],
+    "fro": ["Feröer-szigetek", "Faroe Islands", "Färöer"],
+    "geo": ["Grúzia", "Georgia", "Georgien"],
+    "ger": ["Németország", "Germany", "Deutschland"],
+    "gib": ["Gibraltár", "Gibraltar", "Gibraltar"],
+    "gre": ["Görögország", "Greece", "Griechenland"],
+    "hun": ["Magyarország", "Hungary", "Ungarn"],
+    "irl": ["Írország", "Republic of Ireland", "Irland"],
+    "isl": ["Izland", "Iceland", "Island"],
+    "isr": ["Izrael", "Israel", "Israel"],
+    "ita": ["Olaszország", "Italy", "Italien"],
+    "kaz": ["Kazahsztán", "Kazakhstan", "Kasachstan"],
+    "kvx": ["Koszovó", "Kosovo", "Kosovo"],
+    "lie": ["Liechtenstein", "Liechtenstein", "Liechtenstein"],
+    "ltu": ["Litvánia", "Lithuania", "Litauen"],
+    "lux": ["Luxemburg", "Luxembourg", "Luxemburg"],
+    "lva": ["Lettország", "Latvia", "Lettland"],
+    "mda": ["Moldova", "Moldova", "Moldau"],
+    "mkd": ["Észak-Macedónia", "North Macedonia", "Nordmazedonien"],
+    "mlt": ["Málta", "Malta", "Malta"],
+    "mne": ["Montenegró", "Montenegro", "Montenegro"],
+    "ned": ["Hollandia", "The Netherlands", "Niederlande"],
+    "nir": ["Észak-Írország", "Northern Ireland", "Nordirland"],
+    "nor": ["Norvégia", "Norway", "Norwegen"],
+    "pol": ["Lengyelország", "Poland", "Polen"],
+    "por": ["Portugália", "Portugal", "Portugal"],
+    "rou": ["Románia", "Romania", "Rumänien"],
+    "rus": ["Oroszország", "Russia", "Russland"],
+    "sco": ["Skócia", "Scotland", "Schottland"],
+    "smr": ["San Marino", "San Marino", "San Marino"],
+    "srb": ["Szerbia", "Serbia", "Serbien"],
+    "sui": ["Svájc", "Switzerland", "Schweiz"],
+    "svk": ["Szlovákia", "Slovakia", "Slowakei"],
+    "svn": ["Szlovénia", "Slovenia", "Slowenien"],
+    "swe": ["Svédország", "Sweden", "Schweden"],
+    "tur": ["Törökország", "Türkiye", "Türkei"],
+    "ukr": ["Ukrajna", "Ukraine", "Ukraine"],
+    "wal": ["Wales", "Wales", "Wales"],
 }
 
 
@@ -125,6 +140,10 @@ document.querySelector(".hungarian").onclick = () => {
 }
 document.querySelector(".english").onclick = () => {
     lang = 1;
+    renderLanguage();
+}
+document.querySelector(".german").onclick = () => {
+    lang = 2;
     renderLanguage();
 }
 
