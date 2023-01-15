@@ -29,6 +29,8 @@ document.onkeydown = (event) => {
 
 const languages = [
     {
+        id: 0,
+        lang: "hungarian",
         title: "UEFA tagországok",
         smallTitle: "tagországok",
         moreInfo: "több info",
@@ -42,6 +44,8 @@ const languages = [
         more: "Több"
     },
     {
+        id: 1,
+        lang: "english",
         title: "UEFA Members",
         smallTitle: "Members",
         moreInfo: "more info",
@@ -55,6 +59,8 @@ const languages = [
         more: "More"
     },
     {
+        id: 2,
+        lang: "german",
         title: "UEFA-Mitgliedsverbände",
         smallTitle: "Mitgliedsverbände",
         moreInfo: "mehr info",
@@ -134,17 +140,11 @@ const Nations = {
 
 
 let lang = 1;
-document.querySelector(".hungarian").onclick = () => {
-    lang = 0;
-    renderLanguage();
-}
-document.querySelector(".english").onclick = () => {
-    lang = 1;
-    renderLanguage();
-}
-document.querySelector(".german").onclick = () => {
-    lang = 2;
-    renderLanguage();
+for (const language of languages) {
+    document.querySelector(`.${language.lang}`).onclick = () => {
+        lang = language.id;
+        renderLanguage();
+    }
 }
 
 function renderLanguage() {
