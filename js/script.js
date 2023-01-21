@@ -1,5 +1,4 @@
 import languages from "../json/languages.json" assert {type: 'json'};
-import nations from "../json/nations.json" assert {type: 'json'};
 
 /**
  * this function:
@@ -33,8 +32,9 @@ for (const language of languages) {
 
 function renderLanguage() {
     document.title = languages[lang].title;
+    document.querySelector(".language-button span").innerHTML = languages[lang].languages;
     document.querySelector(".inner-title").innerHTML = `
-        <h1>UEFA</h1>
+        <h1>${languages[lang].uefa}</h1>
         <h2>${languages[lang].smallTitle}</h2>
         <br>
         <a href="#second-page" id="go-down"><span>${languages[lang].moreInfo}</span></a>
@@ -60,12 +60,12 @@ function closeDescription() {
 }
 
 
-for (let id in nations){
+for (let id in languages[lang].nations){
     // country hover titles:
     document.getElementById(id).onmousemove = () => {
         document.querySelector(".country-title").innerHTML = `
-            <img src="./img/flags/${id}.png" alt="${nations[id][lang]}">
-            <h3>${nations[id][lang]}</h3>
+            <img src="./img/flags/${id}.png" alt="${languages[lang].nations[id]}">
+            <h3>${languages[lang].nations[id]}</h3>
             `;
         document.querySelector(".country-title").classList.remove("hide");
         let boxWidth = document.querySelector(".country-title").offsetWidth;
@@ -89,7 +89,7 @@ for (let id in nations){
     document.getElementById(id).onclick = () => {
 
         document.getElementById('favicon').setAttribute('href',`./img/flags/${id}.png`);
-        document.title = nations[id][lang];
+        document.title = languages[lang].nations[id];
         document.getElementById("description").innerHTML = `
         <div id="overlay"></div>
         
@@ -97,17 +97,17 @@ for (let id in nations){
                 <header>
                     <div></div>
                     <div id="FlagName">
-                        <img src="./img/flags/${id}.png" alt="${nations[id][lang]} flag">
-                        <h2>${nations[id][lang]}</h2>
+                        <img src="./img/flags/${id}.png" alt="${languages[lang].nations[id]} flag">
+                        <h2>${languages[lang].nations[id]}</h2>
                     </div>
                     <button class="closeBtn">&times;</button>
                 </header>
                 <main>
                     <table>
                         <tr>
-                            <td><img src="./img/kits/${id}1.png" alt="${nations[id][lang]} home kit"></td>
-                            <td><img src="./img/kits/${id}2.png" alt="${nations[id][lang]} away kit"></td>
-                            <td id="kit3"><img src="./img/kits/${id}3.png" alt="${nations[id][lang]} third kit" 
+                            <td><img src="./img/kits/${id}1.png" alt="${languages[lang].nations[id]} home kit"></td>
+                            <td><img src="./img/kits/${id}2.png" alt="${languages[lang].nations[id]} away kit"></td>
+                            <td id="kit3"><img src="./img/kits/${id}3.png" alt="${languages[lang].nations[id]} third kit" 
                             onerror="document.getElementById('kit3').remove();
                             document.getElementById('kit3des').remove();"></td>
                         </tr>
@@ -123,11 +123,13 @@ for (let id in nations){
 
         document.querySelector(".closeBtn").onclick = () => {
             closeDescription();
-        }
-
-        
+        }       
     }
+}
 
-    
-    
+document.querySelector(".languages").onmouseover = () => {
+    document.querySelector(".options").classList.remove("hide");
+}
+document.querySelector(".languages").onmouseleave = () => {
+    document.querySelector(".options").classList.add("hide");
 }

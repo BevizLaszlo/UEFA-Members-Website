@@ -46,7 +46,8 @@ body {
 /* anchor tag properties and hover animations */
 
 
-a {
+a,
+.language-button {
     font-size: 1vw;
     background-color: transparent;
     color: rgb(var(--dark-grey));
@@ -61,7 +62,8 @@ a {
     transition: color 300ms ease-in-out;
 }
 
-a::before {
+a::before,
+.language-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -75,11 +77,13 @@ a::before {
     transform-origin: bottom;
 }
 
-a:hover {
+a:hover,
+.languages:hover > .language-button {
     color: rgb(var(--light-grey));
 }
 
-a:hover::before {
+a:hover::before,
+.languages:hover > .language-button::before {
     transform: scaleY(1);
     transition: 300ms ease-in-out;
 }
@@ -102,30 +106,51 @@ a:hover::before {
 /* Language options */
 
 .languages {
-    position: fixed;
     display: flex;
+    flex-direction: column;
+    position: absolute;
     margin: 30px;
-    gap: 12px;
+    z-index: 1;
 }
 
-.languages div {
-    background: none;
-    padding: 0;
+.language-button {
+    display: flex;
+    gap: 10px;
+    max-width: min-content;
+}
+
+.options {
+    background-color: rgb(var(--white));
+    border: 1px solid rgb(var(--dark-grey));
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
+.options ul li {
+    padding: 10px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
+    
 }
 
-.languages img {
-    width: 35px;
-    height: 25px;
-    filter: grayscale(100%);
-    transition: 0.3s;
+.options ul li:hover {
+    background-color: rgb(var(--light-grey));
+    font-weight: bold;
 }
 
-.languages img:hover {
-    filter: grayscale(0);
-    transition: 0.3s;
+.options ul li > * {
+    height: 100%;
 }
 
+.options ul li img {
+    border-radius: 50%;
+    width: 2.3vh;
+    height: 2.3vh;
+}
 
 
 /* The main title on the left side with the UEFA logo */
@@ -209,6 +234,7 @@ div.modul {
     height: 80%;
     color: rgb(var(--dark-grey));
     border: 2px solid rgb(var(--dark-grey));
+    z-index: 3;
 }
 
 div.modul header {
@@ -266,6 +292,8 @@ div.modul main table {
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
     pointer-events: all;
+    position: fixed;
+    z-index: 2;
 }
 
 
