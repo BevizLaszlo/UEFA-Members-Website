@@ -116,7 +116,7 @@ a:hover::before,
 .language-button {
     display: flex;
     gap: 10px;
-    max-width: min-content;
+    max-width: fit-content;
 }
 
 .options {
@@ -151,7 +151,6 @@ a:hover::before,
     width: 2.3vh;
     height: 2.3vh;
 }
-
 
 /* The main title on the left side with the UEFA logo */
 
